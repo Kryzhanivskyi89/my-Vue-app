@@ -1,5 +1,29 @@
+
+<!-- <template>
+  <div id="app">
+    <Notifications />
+    <div class="content">
+      <AppHeader />
+      <router-view></router-view>
+    </div>
+    <AppFooter />
+  </div>
+</template> -->
+
+<template>
+  <div :id="$style.app">
+    <Button @click="increment">Click me</Button>
+    <h1>{{ title }}</h1>
+    <DirectivesTest />
+  </div>
+</template>
+
 <script >
-  import Button from './components/Button.vue';
+  // import AppFooter from './components/Footer';
+  // import AppHeader from './components/header';
+  // import Notifications from './components/notifications';
+
+  import Button from './components/shared/Button.vue';
   import DirectivesTest from './components/DirectivesTest.vue';
 
 export default {
@@ -28,21 +52,14 @@ export default {
 
 </script>
 
-<template>
- <div :id="$style.app">
-    <Button @click="increment">Click me</Button>
-    <h1>{{ title }}</h1>
-    <DirectivesTest/>
-  </div>
-</template>
-
-
 
 <style  module>
   #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+    display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   }
 </style>
