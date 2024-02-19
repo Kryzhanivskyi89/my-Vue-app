@@ -1,11 +1,14 @@
 <template>
-    <img src="../assets/svg/logo.svg" alt="">
+  <img src="../assets/svg/logo.svg" alt="">
 </template>
 
 <script>
-export default {
+  export default {
+    // eslint-disable-next-line vue/multi-word-component-names
     name: 'Logo'
-}
+  }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

@@ -5,7 +5,7 @@
     :disabled="loading"
     :class="{ btn: true, 'btn--outlined': outlined }"
   >
-    <!-- <CircleLoader v-if="loading" width="38" height="38" class="btn__loader" /> -->
+    <CircleLoader v-if="loading" width="38" height="38" class="btn__loader" />
     <span class="btn__content" :class="contentStyle">
       <slot></slot>
     </span>
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-// import CircleLoader from '../loaders/Circle';
+import CircleLoader from '../loaders/Circle';
 export default {
   name: 'Button',
   components: {
-    // CircleLoader,
+    CircleLoader,
   },
   props: {
     type: {
