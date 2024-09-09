@@ -52,10 +52,9 @@ export default {
     <Notifications />
     <div class="content">
       <AppHeader />
-      <!-- <router-view></router-view> -->
+      <router-view></router-view>
     </div>
     <AppFooter />
-    <!-- <h3>poc</h3> -->
   </div>
 </template>
 

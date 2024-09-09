@@ -1,6 +1,6 @@
 <template>
   <button
-    v-on="$listeners"
+    v-on="$attrs"
     v-bind:type="type"
     :disabled="loading"
     :class="{ btn: true, 'btn--outlined': outlined }"
@@ -15,7 +15,7 @@
 <script>
 import CircleLoader from '../loaders/Circle';
 export default {
-  name: 'Button',
+  name: 'BaseButton',
   components: {
     CircleLoader,
   },

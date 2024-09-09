@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper-input">
     <input
-      v-on="listeners"
       v-bind="$attrs"
       @blur="blurHandler"
-      :value="value"
+      :value="modelValue"
+      @input="updateValue"
       class="custom-input"
       :class="!isValid && 'custom-input--error'"
     />
@@ -29,7 +29,7 @@ export default {
   },
   inheritAttrs: false,
   props: {
-    value: {
+    modelValue: {
       type: String,
       default: '',
     },
@@ -43,94 +43,52 @@ export default {
     },
   },
   computed: {
-    listeners() {
+    attrs() {
       return {
-        // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api
-        ...this.$listeners,
-        input: (event) => this.$emit('input', event.target.value),
+        ...this.$attrs,
+        input: (event) => this.updateValue(event),
       };
     },
   },
   watch: {
-    value() {
+    modelValue() {
       if (this.isFirstInput) return;
-
       this.validate();
     },
   },
   mounted() {
     if (!this.form) return;
-
     this.form.registerInput(this);
   },
   beforeUnmount() {
     if (!this.form) return;
-
     this.form.unRegisterInput(this);
   },
   methods: {
     validate() {
       this.isValid = this.rules.every((rule) => {
-        const { hasPassed, message } = rule(this.value);
-
+        const { hasPassed, message } = rule(this.modelValue);
         if (!hasPassed) {
           this.error = message || this.errorMessage;
         }
-
         return hasPassed;
       });
-
       return this.isValid;
     },
     blurHandler() {
       if (this.isFirstInput) {
         this.validate();
       }
-
       this.isFirstInput = false;
+    },
+    updateValue(event) {
+      this.$emit('update:modelValue', event.target.value);
     },
     reset() {
       this.isFirstInput = true;
       this.isValid = true;
-      this.$emit('input', '');
+      this.$emit('update:modelValue', '');
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-@import '../../assets/scss/variables';
-
-.wrapper-input {
-  position: relative;
-  display: inline-flex;
-}
-
-.custom-input {
-  height: 40px;
-  width: 100%;
-  border: 2px solid $main-color;
-  font-size: 18px;
-  outline: none;
-  line-height: inherit;
-  padding: 8px 15px;
-
-  &::placeholder {
-    color: inherit;
-  }
-
-  &--error {
-    border-color: red;
-  }
-
-  &__error {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    font-size: 12px;
-    color: red;
-    line-height: 1.3;
-  }
-}
-</style>

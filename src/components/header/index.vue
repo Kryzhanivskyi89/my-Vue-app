@@ -21,7 +21,7 @@ import Container from '../shared/Container';
 import Logo from '../Logo';
 import AuthActions from './AuthActions';
 import AccountActions from './AccountActions';
-// import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -33,7 +33,7 @@ export default {
     AccountActions,
   },
   computed: {
-    // ...mapGetters('auth', ['isLoggedIn']),
+    ...mapGetters('auth', ['isLoggedIn']),
   },
 };
 </script>

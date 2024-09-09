@@ -1,6 +1,5 @@
 <template>
-  // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api, vue/no-deprecated-dollar-listeners-api
-  <form v-on="$attrs" class="form">
+   <form v-on="$attrs" class="form">
     <slot></slot>
   </form>
 </template>

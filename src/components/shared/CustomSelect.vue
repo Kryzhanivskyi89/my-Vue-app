@@ -1,5 +1,5 @@
 <template>
-  <select v-on="listeners" class="custom-select">
+  <select v-on="attrs" class="custom-select">
     <option
       v-for="item in formatedItems"
       :key="item.value"
@@ -19,10 +19,9 @@
       }
     },
     computed: {
-      listeners() {
+      attrs() {
         return {
-          // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api
-          ...this.$listeners,
+          ...this.$attrs,
           input: event => this.$emit('input', event.target.value)
         }
       },

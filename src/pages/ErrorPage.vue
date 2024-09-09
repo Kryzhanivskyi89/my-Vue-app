@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <section class="error">
     <h1 class="error__title">Page not found</h1>
   </section>
@@ -17,4 +17,4 @@ export default {
     text-align: center;
   }
 }
-</style> -->
+</style>
